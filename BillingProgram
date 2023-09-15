@@ -1,0 +1,118 @@
+package BillingProject;
+
+import java.util.Scanner;     //Scanner pakage is use for get a user Input
+
+public class BillingProject {
+    public static void main(String[] args) {
+        //Billing project
+        Scanner sc=new Scanner(System.in);
+        System.out.println("..........Limit is 100 product......");        //Limit for products
+        String[] product=new String[101];
+        int no=0;
+
+        System.out.println("Enter a product "+(no+1)+" name:=");
+        product[no]=sc.next();
+        System.out.println("You want add more Product[Y/N]:=");
+        char input=sc.next().charAt(0);
+        char input2=input;
+        int count=0;
+
+        if (input2 == 'n' || input2 == 'N') {
+
+
+        }
+        else {
+            while (input2 != 'n' && input2 != 'N') {        //if user want to add a extra products
+
+                if (input2 == 'y' || input2 == 'Y') {         //yes
+                    char prg = 'y';
+
+                    while (prg == 'y' || prg == 'Y') {
+                        no++;
+                        System.out.println("Enter a product " + (no + 1) + " name:=");
+                        product[no] = sc.next();
+                        System.out.println("You want add more Product[Y/N]:=");
+                        prg = sc.next().charAt(0);
+                        input2 = prg;
+
+                    }
+
+
+                }
+                else if (input2 == 'n' || input2 == 'N') {      //no
+                    input2 = 'n';
+
+                }
+                else{                              //user Input is out of wrong
+                    System.out.println("-------->Please Enter a valid Ans<---------");
+                    System.out.println("You want add more Product[Y/N]:=");
+                    input2 = sc.next().charAt(0);
+                    if (input2 == 'n' || input2 == 'N') {
+
+                        System.out.println("no");
+                    }
+                }
+
+                count=no;
+
+            }
+        }
+        count++;
+
+        int[] price=new int[count];
+        int total=0;
+        for(int i=0;i<count;i++){
+            System.out.println("Enter "+product[i]+" price:= ");
+            price[i]=sc.nextInt();
+            total=total+price[i];
+
+        }
+        for(int i=0;i<count;i++){
+            System.out.println(product[i]+" = "+price[i]+" Rs");
+
+        }
+        System.out.println("You want to add GST[Y/N]");   
+        char input3=sc.next().charAt(0);
+        if(input3=='y'||input3=='Y'){               //user want to add GSt
+            System.out.println("Enter a Gst:=");
+            int Gst=sc.nextInt();
+            int gst=(total*Gst)/100;
+            int netgst=total+gst;
+            System.out.println("-----------");
+            System.out.println("total:="+total);
+            System.out.println("Gst:="+Gst);
+            System.out.println("----------");
+            System.out.println("total price:="+netgst);
+
+        }
+        else if(input3=='n'||input3=='N'){                //user not want to add GST
+            System.out.println("-----------");
+            System.out.println("total:="+total);
+            System.out.println("----------");
+        }
+
+        while(input3!='n' && input3!='N' && input3!='y' && input3!='Y') {            //user Input is wrong 
+            System.out.println("-------->Please Enter a valid Ans<---------");
+            System.out.println("You want to add GST[Y/N]");
+            input3 = sc.next().charAt(0);
+
+            if (input3 == 'y' || input3 == 'Y') {
+                System.out.println("Enter a Gst:=");
+                int Gst = sc.nextInt();
+                int gst = (total * Gst) / 100;
+                int netgst = total + gst;
+                System.out.println("-----------");
+                System.out.println("Total:=" + total);
+                System.out.println("Gst:=" + Gst);
+                System.out.println("----------");
+                System.out.println("Total price:=" + netgst);
+
+
+            } else if (input3 == 'n' || input3 == 'N') {
+                System.out.println("-----------");
+                System.out.println("Total:=" + total);
+                System.out.println("----------");
+            }
+        }
+    }
+}
