@@ -1,1 +1,45 @@
-we
+import java.util.Scanner;
+public class Assignment {
+    public static void main(String[] args){
+        Scanner sc =new Scanner(System.in); //Scanner   is use to run time me input lene ke liye
+                                            //object refrance is sc
+                                            //new keyword se object bana rahe hai
+        
+        //assignment no 1....
+        //1
+        int n=9;
+        System.out.println(n);
+
+        //2
+        int m=69;
+        System.out.println("Addition of number "+n+" + "+m+" = "+(n+m));
+
+        //3
+        float a=8.34f;
+        float b=5.23f;
+        System.out.println(a*b);
+
+        //4
+        char ch='A';
+        int z=ch;
+        System.out.println("ASCII no of "+ch+ " is " +z);
+
+        //5
+        int divisor=5,divident = 26;
+        int Quotient=divident/divisor;
+        int Reminder=divident%divisor;
+        System.out.println("Quotient is "+Quotient);
+        System.out.println("Reminder is "+Reminder);
+
+        //6
+        int v=54;
+        int w=82;
+        System.out.println("original values  v="+v+" w="+w);
+        int temp;
+        temp=v;
+        v=w;
+        w=temp;
+        System.out.println("after a swapping v="+v+" w="+w);
+
+   }
+}
