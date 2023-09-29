@@ -1,0 +1,156 @@
+package companyCTC;
+//CTC= Cost To Company
+//TDS= Tax Deducted at Source
+import java.time.LocalDate;
+import java.util.Scanner;
+
+public class Company {
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter your name:=");
+        String name=sc.next();
+
+        System.out.println("Enter your ID:=");
+        String employee_id=sc.next();
+        //String employee_id= String.valueOf(sc.next());
+
+        System.out.println("Enter the month:=");
+        int month=sc.nextInt();
+        if (month<=12){
+
+        }
+        else{
+            System.out.println("please enter a valid month");
+            System.out.println("Enter the month:=");
+            month=sc.nextInt();
+        }
+
+        System.out.println("Enter the year:=");
+        int year=sc.nextInt();
+        int current_year= LocalDate.now().getYear();
+        if(year>current_year)
+        {
+            System.out.println(year+" is greater than "+current_year);
+            year=sc.nextInt();
+        }
+
+        System.out.println("Enter your monthly salary:=");
+        int monthly_salary=sc.nextInt();
+
+        System.out.println("Your CTC (yearly salary) is := "+monthly_salary*12);
+
+        System.out.println("Enter you leave day:=");
+        int leave_day=sc.nextInt();
+
+        int day=0;
+        String month_name="NULL";
+        switch(month){
+            case 1:
+                month_name="January";
+                day=31;
+                break;
+            case 2:
+                month_name="February";
+                day=28;
+                break;
+            case 3:
+                month_name="March";
+                day=31;
+                break;
+            case 4:
+                month_name="April";
+                day=30;
+                break;
+            case 5:
+                month_name="May";
+                day=31;
+                break;
+            case 6:
+                month_name="June";
+                day=30;
+                break;
+            case 7:
+                month_name="July";
+                day=31;
+                break;
+            case 8:
+                month_name="August";
+                day=31;
+                break;
+            case 9:
+                month_name="September";
+                day=30;
+                break;
+            case 10:
+                month_name="October";
+                day=31;
+                break;
+            case 11:
+                month_name="November";
+                day=30;
+                break;
+            case 12:
+                month_name="December";
+                day=31;
+                break;
+            default :
+                break;
+
+
+        }
+        System.out.println("This is day in "+month+" month = "+day);
+
+        //int month_day=LocalDate.month().lengthOfMonth();
+        //System.out.println(month_day);
+
+        float monthly_salaryf;
+        monthly_salaryf=(float)monthly_salary;   //int --> float
+        float leave_Amount=monthly_salaryf/day;
+        System.out.println("One day salary := "+leave_Amount);
+        leave_Amount*=leave_day;
+        System.out.println("Your leave Amount := "+leave_Amount );
+
+        System.out.println("Enter you TDS % number:=");
+        float TDS=sc.nextFloat();
+
+        //Gst orignal cost*(gst/100) gst%
+
+        float tds;
+        tds=monthly_salaryf*TDS;
+        tds/=100;
+        System.out.println("TDS Amount:="+tds);
+
+        float Final;
+        Final=monthly_salaryf-leave_Amount;
+        System.out.println("Final Pay Salary:="+Final);
+
+
+        System.out.println("Date:="+month_name+"/"+year);
+
+    }
+}
+
+/*
+Ouput
+        Enter your name:=
+        piyush
+        Enter your ID:=
+        123
+        Enter the month:=
+        9
+        Enter the year:=
+        2023
+        Enter your monthly salary:=
+        10000
+        Your CTC (yearly salary) is := 120000
+        Enter you leave day:=
+        3
+        This is day in 9 month = 30
+        One day salary := 333.33334
+        Your leave Amount := 1000.0
+        Enter you TDS % number:=
+        2
+        TDS Amount:=200.0
+        Final Pay Salary:=9000.0
+        Date:=September/2023
+*/
